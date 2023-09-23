@@ -29,30 +29,39 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
    // add new images or update images
     const createAlbum = async(e)=> {
         e.preventDefault()
+
+        try {
+            if(images.id !== ""){
+                const filesRef = doc(db, "album", folderId , "files", fileId);
+                // Create a reference to the subcollection within the album document
+                const imagesCollectionRef = collection(filesRef, "images");
+                  await setDoc(doc(imagesCollectionRef, images.id), {
+                      title: images.title,
+                      url: images.url,
+                  });
+                  toast.success("image added successfully")
+              }else{
+                  const filesRef = doc(db, "album", folderId , "files", fileId);
+                  // Create a reference to the subcollection within the album document
+                  const imagesCollectionRef = collection(filesRef, "images");
+                  // Add a new document to the subcollection
+                  await addDoc(imagesCollectionRef, {
+                  title: images.title,
+                  url: images.url,
+                  });
+                  toast.success("image updated successfully")
+              }
+              resetForm() 
+            
+        } catch (error) {
+            toast.success("File added successfully")
+        }
         if(images.title === '' || images.url === ''){
             toast.warning("Image Form is empty")
             return
         }
 
-        if(images.id !== ""){
-          const filesRef = doc(db, "album", folderId , "files", fileId);
-          // Create a reference to the subcollection within the album document
-          const imagesCollectionRef = collection(filesRef, "images");
-            await setDoc(doc(imagesCollectionRef, images.id), {
-                title: images.title,
-                url: images.url,
-            });
-        }else{
-            const filesRef = doc(db, "album", folderId , "files", fileId);
-            // Create a reference to the subcollection within the album document
-            const imagesCollectionRef = collection(filesRef, "images");
-            // Add a new document to the subcollection
-            await addDoc(imagesCollectionRef, {
-            title: images.title,
-            url: images.url,
-            });
-        }
-        resetForm() 
+      
     }
 
     // Function to handle search input changes

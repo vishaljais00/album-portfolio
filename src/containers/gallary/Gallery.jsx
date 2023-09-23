@@ -27,6 +27,7 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
 
    // add new album or update album
     const createAlbum = async(e)=> {
+        try {
         e.preventDefault()
         if(album.title === '' || album.url === ''){
             toast.warning("album is empty")
@@ -39,13 +40,20 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
                 title: album.title,
                 url: album.url,
             });
+            toast.success("album added successfully")
         }else{
             await addDoc(collection(db, "album"), {
                 title: album.title,
                 url: album.url,
             });
+            toast.success("album updated successfully")
         }
         resetForm() 
+            
+        } catch (error) {
+            toast.error("Something went wrong")
+        }
+        
     }
 
 

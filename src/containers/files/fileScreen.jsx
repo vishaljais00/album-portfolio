@@ -29,30 +29,39 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
    // add new files or update files
     const createAlbum = async(e)=> {
         e.preventDefault()
-        if(files.title === '' || files.url === ''){
-            toast.warning("file is empty")
-            return
-        }
 
-        if(files.id !== ""){
-            const albumDocRef = doc(db, "album", folderId);
-            // Create a reference to the subcollection within the album document
-            const filesCollectionRef = collection(albumDocRef, "files");
-            await setDoc(doc(filesCollectionRef, files.id), {
+        try {
+            if(files.title === '' || files.url === ''){
+                toast.warning("file is empty")
+                return
+            }
+    
+            if(files.id !== ""){
+                const albumDocRef = doc(db, "album", folderId);
+                // Create a reference to the subcollection within the album document
+                const filesCollectionRef = collection(albumDocRef, "files");
+                await setDoc(doc(filesCollectionRef, files.id), {
+                    title: files.title,
+                    url: files.url,
+                });
+                toast.success("File added successfully")
+            }else{
+                const albumDocRef = doc(db, "album", folderId);
+                // Create a reference to the subcollection within the album document
+                const filesCollectionRef = collection(albumDocRef, "files");
+                // Add a new document to the subcollection
+                await addDoc(filesCollectionRef, {
                 title: files.title,
                 url: files.url,
-            });
-        }else{
-            const albumDocRef = doc(db, "album", folderId);
-            // Create a reference to the subcollection within the album document
-            const filesCollectionRef = collection(albumDocRef, "files");
-            // Add a new document to the subcollection
-            await addDoc(filesCollectionRef, {
-            title: files.title,
-            url: files.url,
-            });
+                });
+                toast.success("File update successfully")
+            }
+            resetForm() 
+            
+        } catch (error) {
+            toast.error("something went wrong")
         }
-        resetForm() 
+       
     }
 
     // Function to handle search input changes
