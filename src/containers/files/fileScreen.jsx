@@ -1,7 +1,7 @@
 import { setDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import styles from './fileScreen.module.css'
+
 
 
 export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, showComponent, folderId, setFileId}) {
@@ -94,7 +94,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
         }
     }, [folderId, showComponent])
     
-
+    //load data on screen load and on create and update
     useEffect(() => {
 
         onSnapshot(collection(db, "album", folderId, "files"), (snapshot)=>{
@@ -112,7 +112,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
   return (
     <div className='container-fluid'>
         {formStatus.show ? 
-        <div className={`text-center ${styles.folderForm}`}>
+        <div className='text-center folderForm'>
             {/* form div for folder cration */}
            
             <span>{formStatus.type} a file</span>
@@ -120,7 +120,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
             <div className='d-flex text-align-center justify-content-center row'>
                 <div className='col-xl-5 col-lg-5 col-md-4 col-12' >
                     <img src={!invalidUrl ? files.url : invalidUrl} 
-                        alt="no cover" onError={handleImageError} className={` ${styles.formImage}`}
+                        alt="no cover" onError={handleImageError} className='formImage'
                     />
                 </div> 
                 <div className='my-auto p-3 col-xl-7 col-lg-7 col-md-8 col-12'> 
@@ -136,8 +136,8 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                     </div>  
                 <div className='text-center p-2'>
 
-                    <button type='button' className={styles.clear} onClick={resetForm} >Clear</button>
-                    <button type='submit' className={styles.create}>{formStatus.type}</button>
+                    <button type='button' className='clear' onClick={resetForm} >Clear</button>
+                    <button type='submit' className='create'>{formStatus.type}</button>
                 </div>
             </form>
         </div>
@@ -152,7 +152,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                         <img src='/assets/back.png' alt='back'/>
                     </span>
                     
-                    <p className={styles.albumHead} >Your Files</p>
+                    <p className='albumHead' >Your Files</p>
                 </div>
                 <div className='searchContainer col-xl-4 col-lg-4 col-md-6 col-12 p-1'>
                         <input placeholder="Search..."
@@ -168,9 +168,9 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
             </div>
             
             {/* Map for Dynamic Folder */}
-            <div className={styles.albumCardBody}>
+            <div className='albumCardBody'>
                 {filteredFileArr?.map((item, i)=>
-                    <div key={i} className={styles.albumCard} >
+                    <div key={i} className='albumCard' >
                         <div className='h-90 w-100 p-3'>
                            <img src={invalidUrl && files.id === item.id ? invalidUrl : item.url } alt="images" cursorshover="true" 
                            onClick={()=>{
@@ -178,7 +178,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                             setFileId(item.id);
                             }}></img>
                         </div> 
-                        <div className={styles.albumFooter}>
+                        <div className='albumFooter'>
                             <span></span>
                             <span cursorshover="true">{item.title} 
                                 

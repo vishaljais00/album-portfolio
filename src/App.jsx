@@ -11,7 +11,6 @@ import FileScreen from './containers/files/fileScreen';
 import useLocalStorage from './customHooks/useLocalStorage';
 import ImagesScreen from './containers/images/ImagesScreen';
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "SHOW_FOLDER": {
@@ -42,10 +41,11 @@ const reducer = (state, action) => {
 
 function App() {
 
-  const [folderId, setFoldeId] = useLocalStorage('folderId', "");
+  const [folderId, setFoldeId] = useLocalStorage('folderId', ""); 
   const [fileId, setFileId] = useLocalStorage('fileId', "");
   const [state, dispatch] = useReducer(reducer, { type: "FOLDER" });
 
+  // to render the component by logic
   const showType = async(type) =>{
     dispatch({
       type: type,
