@@ -40,13 +40,13 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
                 title: album.title,
                 url: album.url,
             });
-            toast.success("album added successfully")
+            toast.success("album updated successfully")
         }else{
             await addDoc(collection(db, "album"), {
                 title: album.title,
                 url: album.url,
             });
-            toast.success("album updated successfully")
+            toast.success("album added successfully")
         }
         resetForm() 
             

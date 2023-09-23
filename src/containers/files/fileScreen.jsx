@@ -44,7 +44,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                     title: files.title,
                     url: files.url,
                 });
-                toast.success("File added successfully")
+                toast.success("File updated successfully")
             }else{
                 const albumDocRef = doc(db, "album", folderId);
                 // Create a reference to the subcollection within the album document
@@ -54,7 +54,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                 title: files.title,
                 url: files.url,
                 });
-                toast.success("File update successfully")
+                toast.success("File added successfully")
             }
             resetForm() 
             

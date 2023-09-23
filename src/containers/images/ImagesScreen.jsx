@@ -39,7 +39,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
                       title: images.title,
                       url: images.url,
                   });
-                  toast.success("image added successfully")
+                  toast.success("image updated successfully")
               }else{
                   const filesRef = doc(db, "album", folderId , "files", fileId);
                   // Create a reference to the subcollection within the album document
@@ -49,7 +49,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
                   title: images.title,
                   url: images.url,
                   });
-                  toast.success("image updated successfully")
+                  toast.success("image added successfully")
               }
               resetForm() 
             
