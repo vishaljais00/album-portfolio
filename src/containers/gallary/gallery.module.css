@@ -84,7 +84,8 @@
     margin-block: 30px;
     transition: border-color .3s;
     width: 200px;
-    margin: 1.5rem
+    margin: 1.5rem;
+
 }
 
 .albumFooter:hover  {

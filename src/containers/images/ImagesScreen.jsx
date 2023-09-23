@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import styles from './imagesScreen.module.css'
 
 
-export default function ImagesScreen({db , updateDoc, collection, onSnapshot, doc, addDoc, showComponent, fileId,  folderId}) {
+export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, showComponent, fileId, deleteDoc, folderId}) {
     
    const [images , setImages] = useState({
     url: "",
@@ -30,7 +30,7 @@ export default function ImagesScreen({db , updateDoc, collection, onSnapshot, do
     const createAlbum = async(e)=> {
         e.preventDefault()
         if(images.title === '' || images.url === ''){
-            toast.warning("file is empty")
+            toast.warning("Image Form is empty")
             return
         }
 
@@ -78,7 +78,14 @@ export default function ImagesScreen({db , updateDoc, collection, onSnapshot, do
         setInvalidUrl()
     
     }
+    // delete images
+
+    async function removeBlog(id){
+      await deleteDoc(doc(db, "album", folderId, "files", fileId, "images", id));
+   }
     
+
+    // check if file and folde id is present or not
     useEffect(() => {
         if(folderId ==  null || fileId ==  null){
             showComponent("SHOW_FOLDER")
@@ -86,6 +93,7 @@ export default function ImagesScreen({db , updateDoc, collection, onSnapshot, do
     }, [folderId,fileId, showComponent])
     
 
+    // load images
     useEffect(() => {
 
         onSnapshot(collection(db, "album", folderId, "files", fileId, "images"), (snapshot)=>{
@@ -162,7 +170,12 @@ export default function ImagesScreen({db , updateDoc, collection, onSnapshot, do
             <div className={styles.albumCardBody}>
                 {filteredFileArr?.map((item, i)=>
                     <div key={i} className={styles.albumCard} >
-                        <div className='h-90 w-100 p-3'>
+                       
+                        <div className='h-90 w-100 p-3 position-relative'>
+                        <i className="fa fa-trash rounded-circle border bg-danger border-danger p-2 
+                        text-light position-absolute top-0 end-0 "
+                            onClick={()=>removeBlog(item.id)}
+                            ></i> 
                            <img src={invalidUrl && images.id === item.id ? invalidUrl : item.url } 
                            alt="images" cursorshover="true" 
                           ></img>
@@ -172,7 +185,7 @@ export default function ImagesScreen({db , updateDoc, collection, onSnapshot, do
                             <span cursorshover="true">{item.title} 
                                 
                             </span>
-                            <i className="fa fa-pencil rounded-circle border bg-danger border-danger p-1 me-1 text-light"
+                            <i className="fa fa-pencil rounded-circle border bg-primary border-primary p-1 me-1 text-light"
                             onClick={()=>{
                                 setFormStatus({show: true, type: 'update'})
                                 setImages({...item})

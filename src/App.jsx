@@ -4,7 +4,7 @@ import './App.css';
 import Gallery from './containers/gallary/Gallery';
 import Navbar from './containers/navbar/TopNav';
 import { db } from './firebase-init';
-import { collection, doc, addDoc, onSnapshot, updateDoc  } from "firebase/firestore"; 
+import { collection, doc, addDoc, onSnapshot, deleteDoc  } from "firebase/firestore"; 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FileScreen from './containers/files/fileScreen';
@@ -57,20 +57,20 @@ function App() {
     <div className="App">
       <Navbar/>
       {state.type === 'FOLDER'?
-        <Gallery db={db} doc={doc} updateDoc={updateDoc}  
+        <Gallery db={db} doc={doc}
           collection={collection} addDoc={addDoc} 
           onSnapshot={onSnapshot} showComponent={showType}
           setFoldeId={setFoldeId}
         />
       : state.type === 'FILE' ?
 
-        <FileScreen db={db} doc={doc} updateDoc={updateDoc}  
+        <FileScreen db={db} doc={doc} 
         collection={collection} addDoc={addDoc} 
         onSnapshot={onSnapshot} showComponent={showType} folderId={folderId} setFileId={setFileId} />
       : 
       
-        <ImagesScreen db={db} doc={doc} updateDoc={updateDoc}  
-        collection={collection} addDoc={addDoc} 
+        <ImagesScreen db={db} doc={doc} 
+        collection={collection} addDoc={addDoc}  deleteDoc={deleteDoc}
         onSnapshot={onSnapshot} showComponent={showType} folderId={folderId} fileId={fileId} 
       />
       }

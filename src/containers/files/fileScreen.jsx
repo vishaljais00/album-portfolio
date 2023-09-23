@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import styles from './fileScreen.module.css'
 
 
-export default function FileScreen({db , updateDoc, collection, onSnapshot, doc, addDoc, showComponent, folderId, setFileId}) {
+export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, showComponent, folderId, setFileId}) {
     
    const [files , setFiles] = useState({
     url: "",
@@ -35,7 +35,6 @@ export default function FileScreen({db , updateDoc, collection, onSnapshot, doc,
         }
 
         if(files.id !== ""){
-            console.log("folderId",folderId, "files", files.id)
             const albumDocRef = doc(db, "album", folderId);
             // Create a reference to the subcollection within the album document
             const filesCollectionRef = collection(albumDocRef, "files");

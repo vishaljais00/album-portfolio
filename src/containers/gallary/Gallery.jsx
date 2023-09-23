@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './gallery.module.css'
 import { toast } from 'react-toastify';
 import { setDoc } from 'firebase/firestore';
-export default function Gallery({db , updateDoc, collection, onSnapshot, doc, addDoc, showComponent, setFoldeId}) {
+export default function Gallery({db, collection, onSnapshot, doc, addDoc, showComponent, setFoldeId}) {
 
 
    const [album , setAlbum] = useState({
@@ -34,7 +34,7 @@ export default function Gallery({db , updateDoc, collection, onSnapshot, doc, ad
         }
 
         if(album.id !== ""){
-            console.log("album.id ", album.id )
+
             await setDoc(doc(db, "album", album.id), {
                 title: album.title,
                 url: album.url,
