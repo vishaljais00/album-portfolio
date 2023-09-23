@@ -102,7 +102,7 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
         {formStatus.show ? 
         <div className='text-center folderForm'>
             {/* form div for folder cration */}
-            <span>{formStatus.type} an Album</span>
+            <span>{formStatus.type} an album</span>
             <form className='p-2' onSubmit={createAlbum}> 
                 <div className='d-flex text-align-center justify-content-center row'>
                     <div className='col-xl-5 col-lg-5 col-md-4 col-12'>
@@ -115,7 +115,7 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
                             value={album.title} 
                             onChange={(e)=>setAlbum(prev=>({...prev, title: e.target.value}))} 
                         />
-                        <input placeholder='Album Cover' className='mb-2' 
+                        <input placeholder='Album Cover URL' className='mb-2' 
                             value={album.url} onChange={(e)=>{setAlbum(prev=>({...prev, url: e.target.value})); setInvalidUrl(null)}} 
                         />
                     </div>

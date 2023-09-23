@@ -128,7 +128,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                         value={files.title} 
                         onChange={(e)=>setFiles(prev=>({...prev, title: e.target.value}))} 
                         />
-                    <input placeholder='File Cover' className='mb-2' value={files.url} 
+                    <input placeholder='File Cover URL' className='mb-2' value={files.url} 
                         onChange={(e)=>{setFiles(prev=>({...prev, url: e.target.value})); setInvalidUrl(null)}} 
                     />
                 </div>

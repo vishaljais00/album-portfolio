@@ -14,7 +14,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
 
    const [formStatus, setFormStatus] = useState({
     show: false,
-    type: 'create'
+    type: 'upload'
    })
    
    const [imageArr , setImageArr] = useState([])
@@ -83,7 +83,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
         setImages({url: "",
         title: "",
         id: ""})
-        setFormStatus({show: false,type: 'create'})
+        setFormStatus({show: false,type: 'upload'})
         setInvalidUrl()
     
     }
@@ -123,7 +123,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
         <div className='text-center folderForm'>
             {/* form div for folder cration */}
            
-            <span>{formStatus.type} a file</span>
+            <span>{formStatus.type} a image</span>
             <form className='p-2' onSubmit={createAlbum}>
             <div className='d-flex text-align-center justify-content-between row'>
                 <div className='col-xl-5 col-lg-5 col-md-4 col-12'>
@@ -132,11 +132,11 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
                     />
                 </div> 
                 <div className='my-auto p-3  col-xl-7 col-lg-7 col-md-8 col-12'> 
-                    <input placeholder='File Name' className='mb-2' 
+                    <input placeholder='Image Name' className='mb-2' 
                         value={images.title} 
                         onChange={(e)=>setImages(prev=>({...prev, title: e.target.value}))} 
                         />
-                    <input placeholder='File Cover' className='mb-2' value={images.url} 
+                    <input placeholder='Image URL' className='mb-2' value={images.url} 
                         onChange={(e)=>{setImages(prev=>({...prev, url: e.target.value})); setInvalidUrl(null)}} 
                     />
                 </div>
@@ -168,7 +168,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
                          ></input>
                 {formStatus.show ? 
                     <button className="btn btn-danger  ms-2" onClick={resetForm}>Clear</button> :
-                    <button className="btn btn-success ms-2" onClick={()=>setFormStatus({show: true, type: 'create'})}>{formStatus.type}</button>
+                    <button className="btn btn-success ms-2" onClick={()=>setFormStatus({show: true, type: 'upload'})}>{formStatus.type}</button>
                 }
                 </div>
                
