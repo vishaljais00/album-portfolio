@@ -122,7 +122,7 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
             </form>
         </div>
         : <></> }
-        <div className='container border border-primary mt-4'>
+        <div className='container mt-4 border-2 border-secondary p-3 rounded shadow'>
             {/* for folder shown  */}
             <div className='d-flex align-items-center justify-content-end p-2 row'>
                 <div className='d-flex align-items-center col-xl-8 col-lg-8 col-md-6 col-12'>
@@ -142,7 +142,7 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
             </div>
             
             {/* Map for Dynamic Folder */}
-            <div className={styles.albumCardBody}>
+            <div className={` ${styles.albumCardBody}`}>
                 {filteredFileArr?.map((item, i)=>
                     <div key={i} className={styles.albumCard} >
                         <div className='h-90 w-100 p-3'>

@@ -143,7 +143,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
         : <></> }
 
         
-        <div className='container border border-primary mt-4'>
+        <div className='container mt-4 border-2 border-secondary p-3 rounded shadow'>
           {/* for images shown  */}
             <div className='d-flex align-items-center justify-content-end p-2 row'>
                 <div className='d-flex align-items-center col-xl-8 col-lg-8 col-md-6 col-12'>

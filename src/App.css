@@ -17,7 +17,7 @@
 .searchContainer{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 .searchContainer input {
     font-size: 1.1rem;
@@ -30,6 +30,7 @@
 .inputBorder{
     border-left: 2px solid rgb(19, 121, 230);
 }
+
 
 @media (min-width: 768px) {
     /* Your CSS styles for md-up screens go here */

@@ -114,7 +114,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                         alt="no cover" onError={handleImageError} className={` ${styles.formImage}`}
                     />
                 </div> 
-                <div className='my-auto p-3  col-xl-7 col-lg-7 col-md-8 col-12'> 
+                <div className='my-auto p-3 col-xl-7 col-lg-7 col-md-8 col-12'> 
                     <input placeholder='File Name' className='mb-2' 
                         value={files.title} 
                         onChange={(e)=>setFiles(prev=>({...prev, title: e.target.value}))} 
@@ -135,7 +135,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
         : <></> }
 
         {/* for files shown  */}
-        <div className='container border border-primary mt-4'>
+        <div className='container mt-4 border-2 border-secondary p-3 rounded shadow'>
           
             <div className='d-flex align-items-center justify-content-between p-2 row'>
                 <div className='d-flex align-items-center col-xl-8 col-lg-8 col-md-6 col-12'>
@@ -145,7 +145,7 @@ export default function FileScreen({db ,collection, onSnapshot, doc, addDoc, sho
                     
                     <p className={styles.albumHead} >Your Files</p>
                 </div>
-                <div className='searchContainer col-xl-8 col-lg-8 col-md-6 col-12'>
+                <div className='searchContainer col-xl-4 col-lg-4 col-md-6 col-12 p-1'>
                         <input placeholder="Search..."
                          value={searchQuery}
                          onChange={handleSearchInputChange}
