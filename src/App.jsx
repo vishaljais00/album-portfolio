@@ -4,7 +4,7 @@ import './App.css';
 import Gallery from './containers/gallary/Gallery';
 import Navbar from './containers/navbar/TopNav';
 import { db } from './firebase-init';
-import { collection, doc, addDoc, onSnapshot, getDocs, deleteDoc, updateDoc  } from "firebase/firestore"; 
+import { collection, doc, addDoc, onSnapshot, updateDoc  } from "firebase/firestore"; 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FileScreen from './containers/files/fileScreen';
