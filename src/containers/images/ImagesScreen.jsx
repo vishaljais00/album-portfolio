@@ -111,18 +111,18 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
   return (
     <div className='container-fluid'>
         {formStatus.show ? 
-        <div className={styles.folderForm}>
+        <div className={`text-center ${styles.folderForm}`}>
             {/* form div for folder cration */}
            
             <span>{formStatus.type} a file</span>
             <form className='p-2' onSubmit={createAlbum}>
-            <div className='d-flex text-align-center justify-content-center'>
-                <div >
-                    <img src={!invalidUrl ? images.url : invalidUrl} height='150px'
+            <div className='d-flex text-align-center justify-content-between row'>
+                <div className='col-xl-5 col-lg-5 col-md-4 col-12'>
+                    <img src={!invalidUrl ? images.url : invalidUrl} className={` ${styles.formImage}`}
                         alt="no cover" onError={handleImageError} 
                     />
                 </div> 
-                <div className='my-auto p-2 ms-2 inputBorder'> 
+                <div className='my-auto p-3  col-xl-7 col-lg-7 col-md-8 col-12'> 
                     <input placeholder='File Name' className='mb-2' 
                         value={images.title} 
                         onChange={(e)=>setImages(prev=>({...prev, title: e.target.value}))} 
@@ -132,7 +132,7 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
                     />
                 </div>
                     
-                    </div>  
+            </div>  
                 <div className='text-center p-2'>
 
                     <button type='button' className={styles.clear} onClick={resetForm} >Clear</button>
@@ -145,15 +145,15 @@ export default function ImagesScreen({db, collection, onSnapshot, doc, addDoc, s
         
         <div className='container border border-primary mt-4'>
           {/* for images shown  */}
-            <div className='d-flex align-items-center justify-content-between p-2'>
-                <div className='d-flex align-items-center'>
+            <div className='d-flex align-items-center justify-content-end p-2 row'>
+                <div className='d-flex align-items-center col-xl-8 col-lg-8 col-md-6 col-12'>
                     <span className='backButtonContainer' onClick={()=>showComponent("SHOW_FILE")}>
                         <img src='/assets/back.png' alt='back'/>
                     </span>
                     
                     <p className={styles.albumHead} >Your images</p>
                 </div>
-                <div className='searchContainer'>
+                <div className='searchContainer col-xl-4 col-lg-4 col-md-6 col-12 p-1'>
                         <input placeholder="Search..."
                          value={searchQuery}
                          onChange={handleSearchInputChange}

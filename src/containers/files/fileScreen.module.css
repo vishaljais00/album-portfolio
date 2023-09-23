@@ -114,3 +114,57 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.formImage{
+    height: 150px;
+}
+
+@media (max-width: 575.98px) {
+    /* Your CSS styles for screens less than 576px go here */
+    .folderForm{
+        width: 90vw;
+    }
+    .formImage{
+        height:100px;
+        width: 100px;
+        text-align: center;
+    }
+  }
+
+  
+
+  /* CSS for screens between 576px and 768px */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .folderForm{
+        width: 90vw;
+    }
+    .formImage{
+        text-align: center;
+        height: 100px;
+        width: 100px;
+    }
+  }
+
+  
+
+  @media (min-width: 768px) and (max-width: 945.98px) {
+
+    .folderForm{
+        width: 60vw;
+    }
+    .formImage{
+        height: 120px;
+        width: 120px;
+    }
+  }
+
+  @media (min-width: 946px) and (max-width: 1400.98px) {
+
+    .folderForm{
+        width: 70vw;
+    }
+    .formImage{
+        height: 180px;
+        width: 180px;
+    }
+  }

@@ -30,3 +30,21 @@
 .inputBorder{
     border-left: 2px solid rgb(19, 121, 230);
 }
+
+@media (min-width: 768px) {
+    /* Your CSS styles for md-up screens go here */
+  
+}
+
+  @media (max-width: 599px) {
+    /* Your CSS styles for screens smaller than 600px go here */
+    .searchContainer{
+        margin-top: 20px;
+       }
+  }
+  
+  /* CSS for screens that are smaller (sm-up, ≥ 576px) */
+  @media (min-width: 576px) {
+    /* Your CSS styles for sm-up screens go here */
+    
+  }

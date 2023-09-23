@@ -93,17 +93,17 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
   return (
     <div className='container-fluid'>
         {formStatus.show ? 
-        <div className={styles.folderForm}>
+        <div className={`text-center ${styles.folderForm}`}>
             {/* form div for folder cration */}
             <span>{formStatus.type} an Album</span>
             <form className='p-2' onSubmit={createAlbum}> 
-                <div className='d-flex text-align-center justify-content-center'>
-                    <div >
-                        <img src={!invalidUrl ? album.url : invalidUrl} height='150px'
-                         alt="no cover" onError={handleImageError} 
+                <div className='d-flex text-align-center justify-content-center row'>
+                    <div className='col-xl-5 col-lg-5 col-md-4 col-12'>
+                        <img src={!invalidUrl ? album.url : invalidUrl} 
+                         alt="no cover" onError={handleImageError} className={` ${styles.formImage}`}
                         />
                     </div>
-                    <div className='my-auto p-2 ms-2 inputBorder'>
+                    <div className='my-auto p-3  col-xl-7 col-lg-7 col-md-8 col-12'>
                         <input placeholder='Album Name' className='mb-2' 
                             value={album.title} 
                             onChange={(e)=>setAlbum(prev=>({...prev, title: e.target.value}))} 
@@ -124,11 +124,11 @@ export default function Gallery({db, collection, onSnapshot, doc, addDoc, showCo
         : <></> }
         <div className='container border border-primary mt-4'>
             {/* for folder shown  */}
-            <div className='d-flex align-items-center justify-content-between p-2'>
-                <div className='d-flex align-items-center'>
+            <div className='d-flex align-items-center justify-content-end p-2 row'>
+                <div className='d-flex align-items-center col-xl-8 col-lg-8 col-md-6 col-12'>
                     <p className={styles.albumHead} >Your albums</p>
                 </div>
-                <div className='searchContainer'>
+                <div className='searchContainer col-xl-4 col-lg-4 col-md-6 col-12 p-1'>
                         <input placeholder="Search..."
                          value={searchQuery}
                          onChange={handleSearchInputChange}
